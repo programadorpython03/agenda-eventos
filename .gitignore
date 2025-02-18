@@ -1,0 +1,5 @@
+venv
+schema.db
+**/__pycache__
+.pytest_cache
+postman-linux-x64.tar.gz
