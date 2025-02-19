@@ -25,7 +25,7 @@ Esta API fornece endpoints para criar, ler, atualizar e deletar links de eventos
 
 ## Estrutura do Projeto 
 
-rc/
+src/
 ├── main/
 │ └── routes/
 │ └── events_links_route.py
