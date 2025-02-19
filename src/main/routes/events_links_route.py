@@ -37,3 +37,12 @@ def delete_events_link(event_id):
 
     return jsonify(http_response.body), http_response.status_code
 
+@events_links_route_bp.route("/events_links/<event_id>", methods=["PUT"])
+def update_events_link(event_id):
+    events_links_repository = EventsLinksRepository()
+    events_links_manager = EventsLinkManager(events_links_repository)
+
+    http_request = HttpRequest(params={"event_id": event_id})
+    http_response = events_links_manager.update_events_link(http_request) 
+
+    return jsonify(http_response.body), http_response.status_code 
