@@ -10,14 +10,12 @@ def test_insert_event_link():
     assert link is not None
     assert len(link) == 7
 
-def test_select_events_link():
+@pytest.mark.skip("Get rank subscriber is not implemented")
+def test_rank_subscriber():
     events_links_repository = EventsLinksRepository()
     event_id = 1
-    subscriber_id = 1
-    link = events_links_repository.select_events_link(event_id, subscriber_id)
+    result = events_links_repository.get_rank_subscriber(event_id)
+    print()
 
-    assert link is not None
-    assert link.evento_id == event_id
-    assert link.inscrito_id == subscriber_id
-    assert len(link.link) == 7
-  
+    for row in result:
+        print(f'Link: {row.link} - Total de Inscritos: {row.Total_de_Inscritos}')

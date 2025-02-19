@@ -1,3 +1,4 @@
+from sqlalchemy import func, desc
 from src.models.configs.connection import DBConnectionHandler
 from src.models.entities.inscritos import Inscritos
 from src.models.interfaces.subscribers_repository_interface import SubscribersRepositoryInterface
@@ -32,3 +33,37 @@ class SubscribersRepository(SubscribersRepositoryInterface):
             )
 
             return data
+        
+    def select_subscriber_by_link(self, link: str, event_id: int) -> list:
+        with DBConnectionHandler() as db:
+            data = (
+                db.session
+                .query(Inscritos)
+                .filter(
+                    Inscritos.link == link,
+                    Inscritos.evento_id == event_id
+                )
+                .all()
+            )
+
+            return data
+        
+    def get_rank_subscriber(self, event_id: int) -> list:
+        with DBConnectionHandler() as db:
+            result = (
+                db.session
+                .query(
+                    Inscritos.email,
+                    func.count(Inscritos.id).label("Total de Inscritos")
+                )
+                .filter(
+                    Inscritos.evento_id == event_id,
+                    Inscritos.link != None
+                )
+                .group_by(Inscritos.link)
+                .order_by(desc("Total de Inscritos"))
+                .all()
+            )
+
+            return result
+
