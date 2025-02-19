@@ -1,5 +1,5 @@
 import pytest
-from src.model.repositories.eventos_repository import EventosRepository
+from src.models.repositories.events_repository import EventosRepository
 
 @pytest.mark.skip("skipping test_insert_events")
 def test_insert_events():

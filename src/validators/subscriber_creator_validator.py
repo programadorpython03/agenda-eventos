@@ -8,7 +8,7 @@ def subscribers_creator_validator(request: any):
       "schema": {
         "nome": {"type": "string", "required": True, "empty": False, "empty": False},
         "email": {"type": "string", "required": True, "empty": False, "empty": False}, 
-        "link_evento": {"type": "string", "required": False, "empty": False},
+        "link": {"type": "string", "required": False, "empty": True},
         "evento_id": {"type": "integer", "required": True, "empty": False},
       } 
     }

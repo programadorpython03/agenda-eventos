@@ -1,9 +1,9 @@
-from src.model.entities.eventos import Eventos
-from src.model.configs.connection import DBConnectionHandler
-from src.model.interfaces.eventos_repositor_interfacey import EventosRepositoryInterface
+from src.models.entities.eventos import Eventos
+from src.models.configs.connection import DBConnectionHandler
+from src.models.interfaces.events_repository_interface import EventsRepositoryInterface
 
-class EventosRepository(EventosRepositoryInterface):
-    def insert_evento(self, nome: str) -> None:
+class EventsRepository(EventsRepositoryInterface):
+    def insert_event(self, nome: str) -> None:
         with DBConnectionHandler() as db_connection:
             try:
                 new_evento = Eventos(nome=nome)

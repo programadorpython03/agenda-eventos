@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from src.model.entities.inscritos import Inscritos
+from src.models.entities.inscritos import Inscritos
 
 class SubscribersRepositoryInterface(ABC):
     
